@@ -7,8 +7,7 @@ ENV TZ Asiz/Shanghai
 RUN mkdir -p /conf && \
     mkdir -p /data && \
     apt-get update && \
-    apt-get install -y aria2 && \
-    apt-get clean
+    apt-get install -y aria2
 
 
 ADD aria2.conf conf-default/aria2-default.conf
