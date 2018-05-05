@@ -1,12 +1,15 @@
-FROM alpine:edge
+FROM arm32v7/debian:jessie-slim
 
 LABEL maintainer "leopoo <www.leopoo.com>"
 
-ENV  TIME_ZONE Asiz/Shanghai
+ENV TZ Asiz/Shanghai
 
 RUN mkdir -p /conf && \
     mkdir -p /data && \
-    apk add --no-cache tzdata bash aria2 s6
+    apt-get update && \
+    apt-get install -y aria2 && \
+    apt-get clean
+
 
 ADD aria2.conf conf-default/aria2-default.conf
 ADD run.sh /run.sh
